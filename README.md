@@ -1,4 +1,4 @@
-# digitalocean-challenge
+# Digital Ocean Kubernetes Challenge - Policy enforcement
 Repo for 2021 Kubernetes Challenge by DigitalOcean. 
 
 ## Requirements
