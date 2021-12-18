@@ -24,6 +24,18 @@ Repo for 2021 Kubernetes Challenge by DigitalOcean.
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
+
+## Push a image to the Docker 
+
+- Build or pull a image:
+    - `$ docker pull redis`
+- Log into your DigitalOcean Container Registry:
+    - `$ doctl registry login`
+- Tag the image
+    - `$ docker tag <IMAGE_ID> registry.digitalocean.com/my-private-registry-test/redis`
+- Push the image to your registry
+    - `$ docker push registry.digitalocean.com/my-private-registry-test/redis`
+
 ## Install Kyverno
 - Add Kyverno Helm repository and scan for new charts
     - `$ helm repo add kyverno https://kyverno.github.io/kyverno/`
@@ -39,3 +51,30 @@ Repo for 2021 Kubernetes Challenge by DigitalOcean.
     NAME                       READY   STATUS    RESTARTS   AGE
     kyverno-6d94754db4-nbbvq   1/1     Running   0          3m20s
     ```
+
+## Apply custom policies
+- Apply policies
+    ```bash
+    $ kubectl apply -f policies
+
+    clusterpolicy.kyverno.io/require-labels configured
+    clusterpolicy.kyverno.io/restrict-image-registries configured
+    ```
+- Check if policies were properly installed
+    ```bash
+    $ kubectl get cpol
+    NAME                        BACKGROUND   ACTION    READY
+    require-labels              true         enforce   true
+    restrict-image-registries   true         enforce   true
+    ```
+
+## Test policy enforcing
+- Create a new namespace
+    - `$ kubectl create ns do-challenge`
+- Create a new deployment
+    - `$ kubectl apply -f failing-deploy.yaml`
+- Check if deployment is blocked
+    ![Deploy fail](img/deploy-fail.png)
+- Fix errors and apply the new deployment
+    - `$ kubectl apply -f fixed-deploy.yaml`
+    ![Deploy fixed](img/deploy-fixed.png)
