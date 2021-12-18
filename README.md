@@ -77,7 +77,7 @@ Repo for 2021 Kubernetes Challenge by DigitalOcean.
 - Create a new deployment
     - `$ kubectl apply -f failing-deploy.yaml`
 - Check if deployment is blocked
-    ![Deploy fail](img/deploy-fail.png)
+    - ![Deploy fail](img/deploy-fail.png)
 - Fix errors and apply the new deployment
     - `$ kubectl apply -f fixed-deploy.yaml`
     ![Deploy fixed](img/deploy-fixed.png)
