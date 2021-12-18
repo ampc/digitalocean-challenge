@@ -53,6 +53,9 @@ Repo for 2021 Kubernetes Challenge by DigitalOcean.
     ```
 
 ## Apply custom policies
+- Two policies were created:
+    - `mandatory-labels.yaml` - requires every deployment to contain the `digital-ocean-challenge` label
+    - `restrict-registry.yaml`- restricts image registry to the one created previously `registry.digitalocean.com/my-private-registry-test` 
 - Apply policies
     ```bash
     $ kubectl apply -f policies
