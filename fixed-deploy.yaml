@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: fixed-deploy
+    digital-ocean-challenge: "abc"
+  name: fixed-deploy
+  namespace: do-challenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fixed-deploy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: fixed-deploy
+    spec:
+      containers:
+      - image: registry.digitalocean.com/my-private-registry-test/redis
+        name: redis
+

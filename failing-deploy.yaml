@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: failing-deploy
+  name: failing-deploy
+  namespace: do-challenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: failing-deploy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: failing-deploy
+    spec:
+      containers:
+      - image: docker.io/redis
+        name: redis
+

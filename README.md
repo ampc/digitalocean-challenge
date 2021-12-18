@@ -10,7 +10,7 @@ Repo for 2021 Kubernetes Challenge by DigitalOcean.
 
 
 ## Integrate Registry with the cluster
-![Integrate Registry with cluster](img/integrate-registry.png)
+![Integrate Registry with cluster](./img/integrate-registry.png)
 
 ## Connect to the cluster
 - Get cluster kubeconfig using the appropriate command
@@ -43,7 +43,7 @@ Repo for 2021 Kubernetes Challenge by DigitalOcean.
 
 - Install Kyverno chart in the cluster
     - `$ helm install kyverno kyverno/kyverno --namespace kyverno --create-namespace`
-    ![Kyverno chart install](img/kyverno-install.png)
+    ![Kyverno chart install](./img/kyverno-install.png)
 
 - Check if Kyverno pod is running
     ```
